@@ -4,7 +4,7 @@ public class Grid_Manager : MonoBehaviour
 {
     public List<Slice> allSlice = new();
 
-    public float sliceWidth;
+    public float sliceHeight;
     public void InitializeGrid()
     {
         allSlice = new List<Slice>(FindObjectsByType<Slice>());

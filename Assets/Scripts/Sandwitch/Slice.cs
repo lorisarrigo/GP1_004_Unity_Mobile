@@ -25,13 +25,13 @@ public class Slice : MonoBehaviour
         tPos = newPos;
         tRot = newRot;
     }
-    public void Flip(Vector2Int newCell, Vector3 anchor, int stackHeight, int stackIndex, Vector2Int direction, float width)
+    public void Flip(Vector2Int newCell, Vector3 anchor, int stackHeight, int stackIndex, Vector2Int direction, float height)
     {
         this.gridPos = newCell; ;
 
         Vector3 rotationAxis = direction.x != 0 ? Vector3.forward : Vector3.right;
 
-        float newY = anchor.y + (stackHeight + stackIndex) * width;
+        float newY = anchor.y + (stackHeight + stackIndex) * height;
         Vector3 newPosTarget = new(anchor.x, newY, anchor.z);
 
         Quaternion newRotTarget = Quaternion.AngleAxis(180, rotationAxis) * tRot;

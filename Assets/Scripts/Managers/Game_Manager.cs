@@ -38,14 +38,9 @@ public class Game_Manager : MonoBehaviour
         }
         Vector3 anchor = destinationStack[0].transform.position;
         int stackHeight = destinationStack.Count;
-        float width = grid.sliceWidth;
+        float height = grid.sliceHeight;
 
-        List<Slice> reverseStack = new(originalStack);
-        reverseStack.Reverse();
-        for (int i = 0; i < reverseStack.Count; i++)
-        {
-            reverseStack[i].Flip(destination, anchor, stackHeight, i, direction, width);
-        }
+        MoveCommand newMove = new (originalStack, origin, destination, direction, anchor, stackHeight, height);
 
         Win();
     }

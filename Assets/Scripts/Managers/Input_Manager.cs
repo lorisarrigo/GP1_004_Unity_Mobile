@@ -31,7 +31,6 @@ public class Input_Manager : MonoBehaviour
 
         if (touch.phase == TouchPhase.Began)
         {
-            Debug.Log(" Schermo toccato");
             initialRaycastPos = touch.screenPosition;
             isMoved = false;
         }
@@ -39,10 +38,8 @@ public class Input_Manager : MonoBehaviour
         if (touch.phase == TouchPhase.Moved && !isMoved)
         {
             Vector2 swipeDelta = touch.delta;
-            Debug.Log($" dito in movimento. Delta: {swipeDelta.magnitude}");
             if (swipeDelta.magnitude > minPixelSwipe)
             {
-                Debug.Log("swipe rilevato oltre la soglia");
                 DeltaMove(swipeDelta);
                 isMoved = true;
             }
@@ -62,7 +59,6 @@ public class Input_Manager : MonoBehaviour
             Slice hitSlice = hit.collider.GetComponentInParent<Slice>();
             if (hitSlice != null)
             {
-                Debug.Log($" raycast ha colpito la fetta: {hitSlice.gameObject.name} in posizione {hitSlice.gridPos}");
                 gm.TryMove(hitSlice.gridPos, gridDir);
             }
             else
@@ -70,6 +66,6 @@ public class Input_Manager : MonoBehaviour
                 Debug.Log("Raycast ha colpito qualcosa");
             }
         }
-        else Debug.Log("RayCast nel vuoto, nessun collider colpito");
+        else return;
     }
 }
