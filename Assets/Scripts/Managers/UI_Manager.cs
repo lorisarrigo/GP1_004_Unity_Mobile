@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+//una classe che gestisce i bottoni in scena
 public class UI_Manager : MonoBehaviour
 {
     [SerializeField] string nextLvl;
@@ -19,13 +20,15 @@ public class UI_Manager : MonoBehaviour
     }
     private void Update()
     {
+        //rendo interagibili/non interagibili i bottoni
         if (UndoBtn != null && ResetBtn & Command_manager.instance != null)
         {
             ResetBtn.interactable = Command_manager.instance.hasMoved;
             UndoBtn.interactable = Command_manager.instance.canUndo;
         }
     }
-    public void NextLvl()
+    //queste sono le funzioni che metto nei bottoni di Skip, Reset e Quit;
+    public void SkipLvl()
     {
         SceneManager.LoadScene(nextLvl);
     }

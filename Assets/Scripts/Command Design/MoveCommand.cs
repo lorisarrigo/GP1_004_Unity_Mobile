@@ -1,18 +1,18 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.Rendering.Universal;
+//classe che esegue l'azione o fa l'Undo
 public class MoveCommand : ICommand
 {
+    //variabili per immagazzinare le informazioni delle celle
     List<Slice> move;
     Vector2Int originalCell;
     Vector2Int destinationCell;
     Vector2Int directionMove;
-
     Vector3 destAnchor;
     Vector3 undoAnchor;
     int heightDest;
-    float HeightSlice;
-
+    float heightSlice;
+    //costruttore che esegue la mossa prendendo i dati dal Game_Manager
     public MoveCommand(List<Slice> originalStack, Vector2Int origin, Vector2Int destination, Vector2Int direction, Vector3 anchor, int destHeight, float Height)
     {
         move = new List<Slice>(originalStack);
@@ -22,22 +22,22 @@ public class MoveCommand : ICommand
 
         destAnchor = anchor;
         heightDest = destHeight;
-        HeightSlice = Height;
+        heightSlice = Height;
 
         if (originalStack.Count > 0) undoAnchor = originalStack[0].transform.position;
         Command_manager.instance.AddCommand(this);
     }
-
+    //l'eseguitore della mossa
     public void Excute()
     {
         List<Slice> reverseStack = new (move);
         reverseStack.Reverse();
         for(int i = 0; i< reverseStack.Count; i++)
         {
-            reverseStack[i].Flip(destinationCell, destAnchor, heightDest, i, directionMove, HeightSlice);
+            reverseStack[i].Flip(destinationCell, destAnchor, heightDest, i, directionMove, heightSlice);
         }
     }
-
+    //l'Undo 
     public void Undo()
     {
         Grid_Manager grid = Object.FindAnyObjectByType<Grid_Manager>();
@@ -58,7 +58,7 @@ public class MoveCommand : ICommand
         Vector2Int invDir = -directionMove;
         for(int i = 0; i< move.Count; i++)
         {
-            move[i].Flip(originalCell, backAnchor, undoHeight, i, invDir, HeightSlice);
+            move[i].Flip(originalCell, backAnchor, undoHeight, i, invDir, heightSlice);
         }
     }
 }

@@ -1,10 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
+
+//classe che gestisce la griglia delle Slice
 public class Grid_Manager : MonoBehaviour
 {
-    
     public float sliceHeight;
     List<Slice> allSlice = new();
+    //inizializza la griglia all'inizio del Game_Manager raccogliendo le coordinate delle varie Slice
     public void InitializeGrid()
     {
         allSlice = new List<Slice>(FindObjectsByType<Slice>());
@@ -28,6 +30,7 @@ public class Grid_Manager : MonoBehaviour
             sl.gridPos = new Vector2Int(xLogic,zLogic);
         }
     }
+    //ordina le coordinate per creare la griglia in ordina
     List<float> GroupAndFilter(List<float> coordinates)
     {
         List<float> coord = new();
@@ -45,6 +48,7 @@ public class Grid_Manager : MonoBehaviour
         coord.Sort();
         return coord;
     }
+    //trova l'index della cella per tradurre le coordinate in numeri ordinati
     int FindIndex(List<float> Index, float val)
     {
         for(int i = 0; i<Index.Count; i++)
@@ -53,16 +57,17 @@ public class Grid_Manager : MonoBehaviour
         }
         return 0;
     }
-    public List<Slice> GetStackPos(Vector2Int stPos) 
+    //permette di prendere le coordinate della cella richiesta
+    public List<Slice> GetStackPos(Vector2Int cellPos) 
     {
         List<Slice> result = new();
         foreach(Slice sl in allSlice)
         {
-            if (sl.gridPos == stPos) result.Add(sl);
+            if (sl.gridPos == cellPos) result.Add(sl);
         }
         result.Sort((a,b)=> a.tPos.y.CompareTo(b.tPos.y));
         return result;
     }
-
+    //lista delle Slice
     public List<Slice> GetAllSlice() => allSlice;
 }
