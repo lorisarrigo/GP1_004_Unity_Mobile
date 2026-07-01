@@ -968,6 +968,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3468c9dff171664da6a019d714dd1a6, type: 3}
+--- !u!114 &4292170226417541126 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3327804369132354885, guid: e3468c9dff171664da6a019d714dd1a6, type: 3}
+  m_PrefabInstance: {fileID: 4292170226417541125}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &4292170226417541127 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6085273868216091747, guid: e3468c9dff171664da6a019d714dd1a6, type: 3}
+  m_PrefabInstance: {fileID: 4292170226417541125}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1001 &5675432097607691802
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1020,6 +1042,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 5144548473346847217, guid: 93cf9af697f5f5d4e890dc80288f1c25, type: 3}
+      propertyPath: UndoBtn
+      value: 
+      objectReference: {fileID: 4292170226417541127}
+    - target: {fileID: 5144548473346847217, guid: 93cf9af697f5f5d4e890dc80288f1c25, type: 3}
+      propertyPath: nextLvl
+      value: Lvl2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144548473346847217, guid: 93cf9af697f5f5d4e890dc80288f1c25, type: 3}
+      propertyPath: ResetBtn
+      value: 
+      objectReference: {fileID: 4292170226417541126}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

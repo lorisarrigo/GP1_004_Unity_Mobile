@@ -167,6 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7fbc101c56c5b4c9a4a1f13b8fff7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Command_manager
+  hasMoved: 0
+  canUndo: 0
 --- !u!1 &2868308600976455867
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,7 +296,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58e138fce1d43e145b730d084b3e02f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_Manager
-  nextLvl: Lvl2
+  nextLvl: Lvl1
+  UndoBtn: {fileID: 0}
+  ResetBtn: {fileID: 0}
 --- !u!1 &9031110298121336893
 GameObject:
   m_ObjectHideFlags: 0
