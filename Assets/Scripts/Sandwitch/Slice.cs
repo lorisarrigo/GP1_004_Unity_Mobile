@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum SType { Bread, Meat, Lettuce, Cheese}
+public enum SType { Bread, Other}
 public class Slice : MonoBehaviour
 {
     public SType type;

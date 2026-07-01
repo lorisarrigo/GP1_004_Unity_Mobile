@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62edc933b2f04cb4b94e1703f6a72a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Slice
-  type: 2
+  type: 1
   gridPos: {x: 0, y: 0}
   tPos: {x: 0, y: 0, z: 0}
   tRot: {x: 0, y: 0, z: 0, w: 0}
