@@ -18,6 +18,11 @@ public class Game_Manager : MonoBehaviour
         List<Slice> destinationStack = grid.GetStackPos(destination);
         if (originalStack.Count == 0 || destinationStack.Count == 0) return;
 
+        if (originalStack[0].type == SType.Bread)
+        {
+            if (originalStack.Count == 1) return;
+        }
+
         bool moveBread = false;
         foreach (Slice sl in originalStack)
         {
@@ -25,7 +30,7 @@ public class Game_Manager : MonoBehaviour
         }
         if (moveBread)
         {
-            if (!moveBreadAndSlice())
+            if (!MoveBreadAndSlice())
             {
                 Debug.Log("mossa bloccata: aggiungere ingredienti");
                 return;
@@ -44,29 +49,26 @@ public class Game_Manager : MonoBehaviour
 
         Win();
     }
-    bool moveBreadAndSlice()
+    bool MoveBreadAndSlice()
     {
-        var all = grid.GetAllSlice();
-        List<Slice> secondary = new ();
+        List<Slice> all = grid.GetAllSlice();
+        List<Vector2Int> BreakCell = new();
         foreach (Slice sl in all)
         {
-            if(sl.type != SType.Bread) secondary.Add(sl);
-        }
-        if (secondary.Count == 0) return true;
+            if(sl.type != SType.Bread)
+            {
+                if(!BreakCell.Contains(sl.gridPos)) BreakCell.Add(sl.gridPos);
+            }
 
-        Vector2Int commonCell = secondary[0].gridPos;
-        
-        foreach (Slice sl in secondary)
-        {
-            if (sl.gridPos != commonCell) return false;
         }
-        List<Slice> cellStack = grid.GetStackPos(commonCell);
-        bool foundBread = false;
-        foreach (Slice sl in cellStack)
+        foreach (Slice sl in all)
         {
-            if(sl.type == SType.Bread) foundBread = true;
+            if(sl.type != SType.Bread)
+            {
+                if (!BreakCell.Contains(sl.gridPos)) return false;
+            }
         }
-        return foundBread;
+        return true; 
     }
     void Win()
     {
