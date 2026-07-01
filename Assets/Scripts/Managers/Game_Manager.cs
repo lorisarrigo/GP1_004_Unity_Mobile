@@ -1,13 +1,14 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Game_Manager : MonoBehaviour
 {
+    [SerializeField] float winTimer;
     Grid_Manager grid;
     void Awake()
     {
         grid = FindAnyObjectByType<Grid_Manager>();
-
         grid.InitializeGrid();
     }
 
@@ -79,6 +80,16 @@ public class Game_Manager : MonoBehaviour
         if (!allInOne) return;
         List<Slice> finalStack = grid.GetStackPos(firstPos);
         
-        if (finalStack[0].type == SType.Bread && finalStack[finalStack.Count - 1].type == SType.Bread) { Debug.Log("Lvl complete"); }
+        if (finalStack[0].type == SType.Bread && finalStack[finalStack.Count - 1].type == SType.Bread) 
+        {
+            StartCoroutine(WinTransition());
+        }
     }
+    IEnumerator WinTransition()
+    {
+        yield return new WaitForSeconds(winTimer);
+
+        UI_Manager UI = FindAnyObjectByType<UI_Manager>();
+        if (UI != null) UI.NextLvl();
+        }
 }

@@ -4,7 +4,7 @@ using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 public class Input_Manager : MonoBehaviour
 {
-    public float minPixelSwipe;
+    [SerializeField] float minPixelSwipe;
     Vector2 initialRaycastPos;
     bool isMoved = false;
     Game_Manager gm;

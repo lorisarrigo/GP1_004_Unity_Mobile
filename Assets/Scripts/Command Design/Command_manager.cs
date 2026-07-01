@@ -1,12 +1,14 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class Command_manager : MonoBehaviour
 {
-    private Stack<ICommand> undoStack = new();
+    Stack<ICommand> undoStack = new();
+    [HideInInspector] public bool hasMoved = false;
+    [HideInInspector] public bool canUndo = false;
+
     public static Command_manager instance;
-    public bool hasMoved = false;
-    public bool canUndo = false;
     private void Awake()
     {
         if(instance != null)

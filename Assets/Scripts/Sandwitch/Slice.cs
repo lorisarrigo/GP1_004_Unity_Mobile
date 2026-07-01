@@ -4,11 +4,11 @@ public enum SType { Bread, Other}
 public class Slice : MonoBehaviour
 {
     public SType type;
-    public Vector2Int gridPos;
-    public Vector3 tPos;
-    public Quaternion tRot;
-
     public float speed;
+    [HideInInspector] public Vector2Int gridPos;
+    [HideInInspector] public Vector3 tPos;
+
+    Quaternion tRot;
 
     void Awake()
     {
@@ -27,7 +27,7 @@ public class Slice : MonoBehaviour
     }
     public void Flip(Vector2Int newCell, Vector3 anchor, int stackHeight, int stackIndex, Vector2Int direction, float height)
     {
-        this.gridPos = newCell; ;
+        this.gridPos = newCell;
 
         Vector3 rotationAxis = direction.x != 0 ? Vector3.forward : Vector3.right;
 

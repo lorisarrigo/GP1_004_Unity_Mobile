@@ -2,9 +2,9 @@ using UnityEngine;
 using System.Collections.Generic;
 public class Grid_Manager : MonoBehaviour
 {
-    public List<Slice> allSlice = new();
-
+    
     public float sliceHeight;
+    List<Slice> allSlice = new();
     public void InitializeGrid()
     {
         allSlice = new List<Slice>(FindObjectsByType<Slice>());
