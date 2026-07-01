@@ -19,8 +19,11 @@ public class UI_Manager : MonoBehaviour
     }
     private void Update()
     {
-        ResetBtn.interactable = Command_manager.instance.hasMoved;
-        UndoBtn.interactable = Command_manager.instance.canUndo;
+        if (UndoBtn != null && ResetBtn & Command_manager.instance != null)
+        {
+            ResetBtn.interactable = Command_manager.instance.hasMoved;
+            UndoBtn.interactable = Command_manager.instance.canUndo;
+        }
     }
     public void NextLvl()
     {

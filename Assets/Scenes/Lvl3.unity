@@ -1733,6 +1733,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1400611731}
     - target: {fileID: 5144548473346847217, guid: 93cf9af697f5f5d4e890dc80288f1c25, type: 3}
+      propertyPath: nextLvl
+      value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144548473346847217, guid: 93cf9af697f5f5d4e890dc80288f1c25, type: 3}
       propertyPath: ResetBtn
       value: 
       objectReference: {fileID: 987086322}
