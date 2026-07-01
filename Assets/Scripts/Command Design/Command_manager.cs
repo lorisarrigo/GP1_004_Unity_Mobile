@@ -16,6 +16,8 @@ public class Command_manager : MonoBehaviour
     }
     public void AddCommand(ICommand cmd)
     {
+        undoStack.Clear();
+        Debug.Log("stack pulita da altre mosse");
         undoStack.Push(cmd);
         cmd.Excute();
     }
